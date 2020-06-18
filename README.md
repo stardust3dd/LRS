@@ -26,4 +26,4 @@ Datasets with movie details have the drawback of having a limited & time period 
 - The UI is a bit of a mess, & right now I am showing upto 6 recommendations only. In next versions I plan to paginate the recommendation outputs so that they are scrollable & easier to view.
 - Currently, this logic is only limited to movie recommendations; I plan on expanding that to include TV-shows in future.
 
-![](CS.png)
+![](cs.png)
