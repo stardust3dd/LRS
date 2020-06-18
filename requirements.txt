@@ -2,6 +2,7 @@ beautifulsoup4==4.9.0
 Flask==1.1.2
 Flask-Compress==1.4.0
 Flask-WTF==0.14.3
+gunicorn==20.0.4
 IMDbPY==6.8
 more-itertools==8.2.0
 numpy==1.18.4
