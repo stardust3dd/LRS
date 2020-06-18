@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <style>
+    h1, h2, h3, h4, h5, h6, p {font-family: 'Quicksand', sans-serif; color: white;}
+    #ip2 {padding: 20px; width: 200px; height: 1px;}
+    .rbutton { margin: 0em; font-family:'Quicksand'; color:white; padding-left:25%; background-color:black; padding:0; }
+  </style>
+
+  <title>LRS</title>
+</head>
+
+
+<body>
+  <div class="row col-12">
+    <div class="col-3" style="background-color: #a152fc; ">
+      <h2 style="padding-left: 0%; padding-top: 3%;">localized <br> recommender <br> system</h2>
+    </div>
+    <div class="row col-9" style="background-color: black; margin: 0em;">
+      <form class="form-inline col-12" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row col-12" style="margin: 0em;">
+          <div style="padding-top: 0.5%;" class="col-2">
+            <h4> {{form.url1.label}} </h4>
+          </div>
+          <div class="col-10">                        
+            <div class="form-group mb-2 col-12">   
+              <input value="{{session['url1']}}" class="form-control col-6" readonly>
+              <div class="col-1"></div>
+              <input value="{{session['rat1']}}" class="form-control col-2" readonly>
+              <div class="col-1"></div>
+              <h4 style="padding-top: 0.5%; text-align: center;">language</h4>
+            </div>                                                   
+          </div>                                     
+        </div>
+        <div class="row col-12" style="margin: 0em; " >
+          <div style="padding-top: 0.5%; margin: 0em;" class="col-2">
+            <h4> {{form.url2.label}} </h4>
+          </div>
+          <div class="col-10">
+            <div class="form-group mb-2 col-12">                              
+              <input value="{{session['url2']}}" class="form-control col-6" readonly>                           
+              <div class="col-1"></div>
+              <input value="{{session['rat2']}}" class="form-control col-2" readonly>
+              <div class="col-1"></div>
+              <input value="{{session['lang']}}" class="form-control col-2" readonly>
+            </div>                            
+          </div>                
+        </div>
+        <div class="row col-12" style="margin: 0em;">
+          <div style="padding-top: 0.5%;" class="col-2">
+            <h4> {{form.url3.label}} </h4>
+          </div>
+          <div class="col-10">
+            <div class="form-group mb-2 col-12">                              
+              <input value="{{session['url3']}}" class="form-control col-6" readonly>                           
+              <div class="col-1"></div>
+              <input value="{{session['rat3']}}" class="form-control col-2" readonly>
+              <div class="col-1"></div>
+              <h4 style="padding-top: 0.5%; text-align: center;">submit!</h4>
+            </div>                            
+          </div>             
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row col-12">
+    <div class="col-3" style="background-color: #d8b6fe; margin: 0em;">
+      <div class="row" style="padding-top: 5%;">        
+        <div class="col-4">
+          <img src="{{movies[0]['cover url']}}">
+        </div>                
+        <div class="col-8">
+          <h5 style="padding-left: 3%; color: black;"><b>{{ movies[0]['title'] }} ({{movies[0]['year']}})</b></h5>
+          {% for dir in movies[0]['directors'] %}
+          <h6 style="padding-left: 3%; color: black;">{{ dir }}</h6>
+          {% endfor %}
+          <div style="margin: 0em;" class="row">
+            {% for genre in movies[0]['genres'] %}
+            <h6 style="padding-left: 3%; color: black;">#{{ genre }}</h6>
+            {% endfor %}
+          </div>
+          <p style="padding-left: 3%; color: black;">{{ movies[0]['rating'] }} ({{ movies[0]['votes'] }} votes)</p>
+        </div>        
+      </div>
+      <div class="row" style="padding-top: 5%;">        
+        <div class="col-4">
+          <img src="{{movies[1]['cover url']}}">
+        </div>                
+        <div class="col-8">
+          <h5 style="padding-left: 3%; color: black;"><b></b>{{ movies[1]['title'] }} ({{movies[1]['year']}})</b></h5>
+          {% for dir in movies[1]['directors'] %}
+          <h6 style="padding-left: 3%; color: black;">{{ dir }}</h6>
+          {% endfor %}
+          <div style="margin: 0em;" class="row">
+            {% for genre in movies[1]['genres'] %}
+            <h6 style="padding-left: 3%; color: black;">#{{ genre }}</h6>
+            {% endfor %}
+          </div>
+          <p style="padding-left: 3%; color: black;">{{ movies[1]['rating'] }} ({{ movies[1]['votes'] }} votes)</p>
+        </div>        
+      </div>
+      <div class="row" style="padding-top: 5%; padding-bottom: 5%;">        
+        <div class="col-4">
+          <img src="{{movies[2]['cover url']}}">
+        </div>                
+        <div class="col-8">
+          <h5 style="padding-left: 3%; color: black;"><b></b>{{ movies[2]['title'] }} ({{movies[0]['year']}})</b></h5>
+          {% for dir in movies[2]['directors'] %}
+          <h6 style="padding-left: 3%; color: black;">{{ dir }}</h6>
+          {% endfor %}
+          <div style="margin: 0em;" class="row">
+            {% for genre in movies[2]['genres'] %}
+            <h6 style="padding-left: 3%; color: black;">#{{ genre }}</h6>
+            {% endfor %}
+          </div>          
+          <p style="padding-left: 3%; color: black;">{{ movies[2]['rating'] }} ({{ movies[2]['votes'] }} votes)</p>
+        </div>        
+      </div>
+    </div>
+    <div class="col-9">
+      <br>
+      <h3 style="color: black; text-align: right;">{{num}} recommendations found for you.</h3>
+      <div class="row col-12" style="padding-top: 3%; margin: 0em;">
+        <div class="row col-4" style="margin: 0em;">
+          <div class="col-3">
+            <img src="{{rec[0]['cover url']}}">
+          </div>                
+          <div class="col-9">
+            <h6 style="padding-left: 3%; color: #a152fc;"><b></b>{{ rec[0]['title'] }} {{rec[0]['year']}}</b></h6>
+            {% for dir in rec[0]['directors'] %}
+            <p style="padding-left: 3%; color: black;">{{ dir }}</p>
+            {% endfor %}
+            <p style="padding-left: 3%; color: black;">{{ rec[0]['genres'] }}</p>
+            <p style="padding-left: 3%; color: black;">IMDb rating: {{ rec[0]['rating'] }}</p>
+          </div>        
+        </div> 
+        <div class="row col-4" style="margin: 0em;">
+          <div class="col-4">
+            <img src="{{rec[1]['cover url']}}">
+          </div>                
+          <div class="col-8">
+            <h6 style="padding-left: 3%; color: #a152fc;"><b></b>{{ rec[1]['title'] }} {{rec[1]['year']}}</b></h6>
+            {% for dir in rec[1]['directors'] %}
+            <p style="padding-left: 3%; color: black;">{{ dir }}</p>
+            {% endfor %}
+            <p style="padding-left: 3%; color: black;">{{ rec[1]['genres'] }}</p>
+            <p style="padding-left: 3%; color: black;">IMDb rating: {{ rec[1]['rating'] }}</p>
+          </div>
+        </div>
+        <div class="row col-4" style="margin: 0em;">
+          <div class="col-4">
+            <img src="{{rec[2]['cover url']}}">
+          </div>                
+          <div class="col-8">
+            <h6 style="padding-left: 3%; color: #a152fc;"><b></b>{{ rec[2]['title'] }} {{rec[2]['year']}}</b></h6>
+            {% for dir in rec[2]['directors'] %}
+            <p style="padding-left: 3%; color: black;">{{ dir }}</p>
+            {% endfor %}
+            <p style="padding-left: 3%; color: black;">{{ rec[2]['genres'] }}</p>
+            <p style="padding-left: 3%; color: black;">IMDb rating: {{ rec[2]['rating'] }}</p>
+          </div>
+        </div>            
+      </div>
+      <div class="row col-12" style="padding-top: 3%; margin: 0em;">
+        <div class="row col-4" style="margin: 0em;">
+          <div class="col-3">
+            <img src="{{rec[3]['cover url']}}">
+          </div>                
+          <div class="col-9">
+            <h6 style="padding-left: 3%; color: #a152fc;"><b></b>{{ rec[3]['title'] }} {{rec[3]['year']}}</b></h6>
+            {% for dir in rec[3]['directors'] %}
+            <p style="padding-left: 3%; color: black;">{{ dir }}</p>
+            {% endfor %}
+            <p style="padding-left: 3%; color: black;">{{ rec[3]['genres'] }}</p>
+            <p style="padding-left: 3%; color: black;">IMDb rating: {{ rec[3]['rating'] }}</p>
+          </div>        
+        </div> 
+        <div class="row col-4" style="margin: 0em;">
+          <div class="col-4">
+            <img src="{{rec[4]['cover url']}}">
+          </div>                
+          <div class="col-8">
+            <h6 style="padding-left: 3%; color: #a152fc;"><b></b>{{ rec[4]['title'] }} {{rec[4]['year']}}</b></h6>
+            {% for dir in rec[4]['directors'] %}
+            <p style="padding-left: 3%; color: black;">{{ dir }}</p>
+            {% endfor %}
+            <p style="padding-left: 3%; color: black;">{{ rec[4]['genres'] }}</p>
+            <p style="padding-left: 3%; color: black;">IMDb rating: {{ rec[4]['rating'] }}</p>
+          </div>
+        </div>
+        <div class="row col-4" style="margin: 0em;">
+          <div class="col-4">
+            <img src="{{rec[5]['cover url']}}">
+          </div>                
+          <div class="col-8">
+            <h6 style="padding-left: 3%; color: #a152fc;"><b></b>{{ rec[5]['title'] }} {{rec[5]['year']}}</b></h6>
+            {% for dir in rec[5]['directors'] %}
+            <p style="padding-left: 3%; color: black;">{{ dir }}</p>
+            {% endfor %}
+            <p style="padding-left: 3%; color: black;">{{ rec[5]['genres'] }}</p>
+            <p style="padding-left: 3%; color: black;">IMDb rating: {{ rec[5]['rating'] }}</p>
+          </div>
+        </div>            
+      </div>
+      <!-- {{ rec[0] }} -->
+    </div>
+  </div>
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
